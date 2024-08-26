@@ -18,10 +18,20 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/axios": "^3.0.3",
+    "@nestjs/bull": "^10.2.1",
     "@nestjs/common": "^10.3.2",
     "@nestjs/core": "^10.3.2",
+    "@nestjs/mongoose": "^10.0.10",
     "@nestjs/platform-express": "^10.3.2",
-    "reflect-metadata": "^0.2.1"
+    "amqplib": "^0.10.4",
+    "axios": "^1.7.5",
+    "bull": "^4.16.0",
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.4",
+    "reflect-metadata": "^0.2.1",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.3.1",
@@ -31,6 +41,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.16",
     "@types/supertest": "^6.0.2",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
