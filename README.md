@@ -34,7 +34,10 @@ yarn install
 yarn build
 yarn start
 ```
-
+4. To run test cases
+```
+yarn test
+```
 
 ### API Endpoints
 

@@ -64,7 +64,7 @@ export class UsersService {
     const user = await this.userModel.findById(userId);
 
     if (!user || !user.avatar) {
-      console.log('Failed to get user');
+      console.log('Failed to get user', userId);
       return '';
     }
 
@@ -89,12 +89,16 @@ export class UsersService {
     }
 
     const userData = await this.findOne(userId);
+    console.log('userData', userData, userId);
+
     const avatarUrl = userData.avatar;
     const avatarBuffer = (
       await this.httpService
         .get(avatarUrl, { responseType: 'arraybuffer' })
         .toPromise()
     ).data;
+
+    console.log('avatarUrl', avatarUrl, avatarBuffer);
 
     fs.writeFileSync(filePath, avatarBuffer);
 
