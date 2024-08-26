@@ -10,6 +10,15 @@ Before you begin, ensure you have the following installed:
 - [MongoDB](https://www.mongodb.com/) (v4.4 or above)
 - [RabbitMQ](https://www.rabbitmq.com/) (v3.7 or above)
 
+### Environment Variables
+Create a .env file in the root of the project and add the following environment variables:
+
+There is one default .env file with cloud monogodb instance running
+```
+    MOGODB_URI=mongodb://localhost:27017/your-database
+    RABBITMQ_URI=amqp://localhost:5672
+```
+
 ## Steps
 
 1. Install dependencies
@@ -34,7 +43,7 @@ yarn start
     Create a new user.
 
     ```
-        curl -X POST http://localhost:3000/api/users -H "Content-Type: application/json" -d '{"id": "2", "email":"goe.bluth@reqres.in","name":"George", "avatar":"https://reqres.in/img/faces/1-image.jpg"}'
+        curl -X POST http://localhost:3000/api/users -H "Content-Type: application/json" -d '{"id": "1", "email":"goe.bluth@reqres.in","name":"George", "avatar":"https://reqres.in/img/faces/1-image.jpg"}'
     ```
 
 - GET /api/user/{userId}
