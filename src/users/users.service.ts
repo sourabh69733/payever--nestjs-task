@@ -68,7 +68,10 @@ export class UsersService {
       return '';
     }
 
-    const hash = crypto.createHash('sha256').update(user.avatar).digest('hex');
+    let hash = crypto.createHash('sha256').update(user.avatar).digest('hex');
+    if (user.avatarHash) {
+      hash = user.avatarHash;
+    }
 
     const baseDir = join(__dirname, '..', '..', '..', 'uploads');
 
@@ -95,7 +98,6 @@ export class UsersService {
 
     fs.writeFileSync(filePath, avatarBuffer);
 
-    user.avatar = filePath;
     user.avatarHash = hash;
     await user.save();
 
@@ -104,11 +106,22 @@ export class UsersService {
 
   async deleteAvatar(userId: string): Promise<void> {
     const user = await this.userModel.findById(userId);
-    if (user.avatar) {
-      fs.unlinkSync(user.avatar);
-      user.avatar = null;
+    if (user && user.avatarHash) {
+      console.log('Deleting user avatar hash', userId);
+      const imgDir = join(
+        __dirname,
+        '..',
+        '..',
+        '..',
+        'uploads',
+        `${user.avatarHash}.png`,
+      );
+
+      fs.unlinkSync(imgDir);
       user.avatarHash = null;
       await user.save();
+    } else {
+      console.log('There is no either user or avatar hash stored in db', user);
     }
   }
 }
