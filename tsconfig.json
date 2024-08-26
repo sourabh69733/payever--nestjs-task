@@ -14,5 +14,9 @@
       "baseUrl": "./",
       "incremental": true,
       "skipLibCheck": true
-    }
+    },
+    "exclude": [
+      "dist",
+      "__references"
+    ]
 }

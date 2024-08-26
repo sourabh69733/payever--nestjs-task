@@ -24,7 +24,7 @@ export class UsersService {
   }
 
   async connectRabbitMQ() {
-    this.connection = await amqp.connect('amqp://127.0.0.1:5672');
+    this.connection = await amqp.connect(process.env.RABBITMQ_URI);
     this.eventChannel = await this.connection.createChannel();
 
     await this.eventChannel.assertQueue('eventQueue', { durable: true });
