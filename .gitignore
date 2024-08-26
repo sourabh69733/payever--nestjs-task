@@ -1,0 +1,7 @@
+node_modules
+dist
+build
+sample
+node_modules
+.vscode
+.DS_Store
